@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+{{block.super}}
+<h1>{{id.name}}</h1>
+<div class="store">
+  <div class="row m-3">
+    {% for data in meals %}
+      <div class="col-md-4 m-0">
+        <div class="card p-1 d-flex" style="width: 18rem;">
+          <img class="card-img-top" src="{{ data.strMealThumb }}" alt="Card image cap">
+          <div class="card-body" style="height: 100px; overflow: hidden;">
+            <h5 class="card-title">{{ data.strMeal }}</h5>
+            <p class="card-text">{{ data.idMeal }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}
+

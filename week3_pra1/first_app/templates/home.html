@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>This is home page</h1>
+    <h2>Author : {{author}}</h2>
+    <h2>Age : {{age}}</h2>
+    <h2>{{lst}}</h2>
+
+    <!-- Conditional Statement -->
+    {% if age >= 20 %}
+    <h4>You will get driving license</h4>
+    {% elif age >= 10 and age <= 19 %} <h4>You will not get driving license</h4>
+        {% else %}
+        <h4>You're a child</h4>
+        {% endif %}
+
+        {{lst}}
+        <h1>{{ lst | join:" - " }}</h1>
+        <h1>{{ birthday | date:"D d M Y" }}</h1>
+        <h1>{{ val | length }}</h1>
+        <h1>{{'Happy coding. Python is fun.' | truncatewords:2}}</h1>
+        <h1>{{"Python is Fun" | cut:" "}}</h1>
+        <!-- For loop -->
+        {% for i in courses %}
+        <h3>{{i.id}} {{i.name}} {{i.fee}}</h3>
+        {% endfor %}
+
+
+
+        <!-- Additional Data -->
+        <h2>Additional Information:</h2>
+        <p>City: {{ additional_info.city }}</p>
+        <p>Country: {{ additional_info.country }}</p>
+        <p>Website: <a href="{{ additional_info.website }}" target="_blank">{{ additional_info.website }}</a></p>
+        <p>Tags: {{ additional_info.tags | join:", " }}</p>
+        <p>Description: {{ additional_info.description }}</p>
+
+        <!-- Filters -->
+        <h1>Filters:</h1>
+
+        <!-- String Filters -->
+        <h3>String Filters:</h3>
+        <!-- Add slashes to a string -->
+        <p>Add Slashes: {{ additional_info.city | addslashes }}</p>
+        <!-- Capitalize the first character of a string -->
+        <p>Capitalize First: {{ author | capfirst }}</p>
+        <!-- Center a string within a specified width -->
+        <p>Center: {{ additional_info.city | center:20 }}</p>
+        <!-- Cut a string at a specific length -->
+        <p>Cut: {{ additional_info.city | cut:"l" }}</p>
+        <p>Original String: {{ author }}</p> <!-- Display the original string -->
+        <!-- Convert to lowercase -->
+        <p>Lowercase: {{ author | lower }}</p>
+        <!-- Convert to uppercase -->
+        <p>Uppercase: {{ author | upper }}</p>
+        <!-- Truncate words to the specified length (2 in this case) -->
+        <p>Truncate Words: {{ author | truncatewords:2 }}</p>
+
+
+        <!-- Numeric Filters -->
+        <h3>Numeric Filters:</h3>
+        <p>Add 10: {{ age | add:10 }}</p>
+        <!-- Check if a numeric value is divisible by 5 -->
+        <p>Divisible by 5: {{ age | divisibleby:5 }}</p>
+        <!-- Format a numeric value as a float with 2 decimal places -->
+        <p>Float Format: {{ age | floatformat:2 }}</p>
+
+
+
+
+        <!-- List Filters -->
+        <h3>List Filters:</h3>
+        <!-- Display the first element of the list -->
+        <p>First Element: {{ lst | first }}</p>
+        <!-- Display the last element of the list -->
+        <p>Last Element: {{ lst | last }}</p>
+        <!-- Join list elements with a specified separator (" - " in this case) -->
+        <p>Join List: {{ lst | join:" - " }}</p>
+        <!-- Slice the list to include only the first 2 elements -->
+        <p>Slice List: {{ lst | slice:":2" }}</p>
+
+
+        <!-- Dictionary Filters -->
+        <h3>Dictionary Filters:</h3>
+        <!-- Sort dictionary items based on the key -->
+        <p>Dict Sort: {{ additional_info1 | dictsort:"city" }}</p>
+        <!-- Sort dictionary items based on the key -->
+        <p>Dict Sort: {{ additional_info1 | dictsort:"city" | make_list | join:", " }}</p>
+
+
+
+
+        <!-- Date Filters -->
+        <h3>Date Filters:</h3>
+        <!-- Format date in "Day date Month Year" -->
+        <p>Birthday Format: {{ birthday | date:"D d M Y" }}</p>
+        <!-- Format time in "Hour:Minute AM/PM" -->
+        <p>Birthday Time Format: {{ birthday | time:"H:i A" }}</p>
+        <!-- Calculate time since the provided date -->
+        <p>Time Since Birthday: {{ birthday | timesince }}</p>
+        <!-- Calculate time until the provided date -->
+        <p>Time Until Birthday: {{ birthday | timeuntil }}</p>
+
+
+
+        <!-- Miscellaneous Filters -->
+        <h3>Miscellaneous Filters:</h3>
+        <!-- Provide a default value if the original value is not provided -->
+        <p>Default: {{ val | default:"No value provided" }}</p>
+        <!-- Provide a default value if the original value is not provided -->
+        <p>Default: {{ lst | default:"No value provided" }}</p>
+
+
+        <!-- Escape HTML content -->
+        <p>Escape HTML: {{ '
+        <h1>HTML content</h1>' | escape }}</p>
+
+
+        <!-- Conditional Filters -->
+        <h3>Conditional Filters:</h3>
+        <!-- Display "Yes", "No", or "Maybe" based on the boolean value -->
+        <p>Yes/No: {{ data.boolean_var | yesno:"Yes,No,Maybe" }}</p>
+</body>
+
+</html>
